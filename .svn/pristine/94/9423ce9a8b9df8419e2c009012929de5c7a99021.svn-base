@@ -1,0 +1,81 @@
+//
+//  WooTabBarViewController.m
+//  Woo
+//
+//  Created by 风外杏林香 on 2018/7/25.
+//  Copyright © 2018年 风外杏林香. All rights reserved.
+//
+
+#import "WooTabBarViewController.h"
+#import "WooBaseNavigationViewController.h"
+#define kClassKey   @"rootVCClassString"
+#define kTitleKey   @"title"
+#define kImgKey     @"imageName"
+#define kSelImgKey  @"selectedImageName"
+@interface WooTabBarViewController ()
+
+@end
+
+@implementation WooTabBarViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    NSArray *childItemsArray = @[
+                                 @{kClassKey : @"WooHomeViewController",
+                                   kTitleKey : @"首页",
+                                   kImgKey  : @"home_Image",
+                                   kSelImgKey : @"home_sel_Image"},
+                                 
+                                 @{kClassKey : @"WooFriendViewController",
+                                   kTitleKey : @"朋友",
+                                   kImgKey : @"friend_Image",
+                                   kSelImgKey : @"friend_sel_Image"},
+                                 @{kClassKey : @"WooWatchViewController",
+                                   kTitleKey : @"看点",
+                                   kImgKey : @"me_Image",
+                                   kSelImgKey : @"me_sel_Image"},
+                                 @{kClassKey : @"WooMeViewController",
+                                   kTitleKey : @"我的",
+                                   kImgKey : @"me_Image",
+                                   kSelImgKey : @"me_sel_Image"},
+                                 
+                                 /*@{kClassKey : @"SDMeTableViewController",
+                                   kTitleKey : @"我",
+                                   kImgKey : @"tabbar_me",
+                                   kSelImgKey : @"tabbar_meHL"}*/];
+    
+    [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
+        UIViewController *vc = [NSClassFromString(dict[kClassKey]) new];
+        vc.title = dict[kTitleKey];
+        WooBaseNavigationViewController *nav = [[WooBaseNavigationViewController alloc] initWithRootViewController:vc];
+        UITabBarItem *item = nav.tabBarItem;
+        item.title = dict[kTitleKey];
+        
+        item.image = [UIImage imageNamed:dict[kImgKey]];
+        item.selectedImage = [[UIImage imageNamed:dict[kSelImgKey]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        NSDictionary *selctedTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:12.f],NSForegroundColorAttributeName : [UIColor colorWithRed:(255 / 255.0) green:(75 / 255.0) blue:(0 / 255.0) alpha:1]};
+        NSDictionary *textAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:12.f],NSForegroundColorAttributeName : [UIColor colorWithRed:(105 / 255.0) green:(105 / 255.0) blue:(105 / 255.0) alpha:1]};
+        [item setTitleTextAttributes:selctedTextAttributes forState:UIControlStateSelected];
+        [item setTitleTextAttributes:textAttributes forState:(UIControlStateNormal)];
+        [self addChildViewController:nav];
+    }];
+   
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

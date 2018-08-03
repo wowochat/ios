@@ -1,0 +1,39 @@
+
+//
+//  HomeViewSubjectCell.m
+//  newLoan
+//
+//  Created by 王起锋 on 2018/6/20.
+//  Copyright © 2018年 王起锋. All rights reserved.
+//
+
+#import "HomeViewSubjectCell.h"
+
+@implementation HomeViewSubjectCell
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self  creatUI];
+    }
+    return self;
+}
+-(void)creatUI
+{
+    self.imageview=[[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/3.0-60*KWidth_Scale)/2.0,18*KWidth_Scale, 60*KWidth_Scale, 60*KWidth_Scale)];
+    self.imageview.layer.cornerRadius=30*KWidth_Scale;
+    self.imageview.clipsToBounds=YES;
+    self.titllabel=[PublicFunction getlabelwithtexttitle:@"" fram:CGRectMake(0,CGRectGetMaxY(self.imageview.frame),SCREEN_WIDTH/3.0, 25*KWidth_Scale) cornerRadius:0 textcolor:[PublicFunction colorWithHexString:@"#666666"] textfont:[UIFont systemFontOfSize:12] backcolor:[PublicFunction colorWithHexString:@"00000"] textAlignment:NSTextAlignmentCenter];
+
+    [self addSubview:self.imageview];
+    [self addSubview:self.titllabel];
+}
+-(void)setModel:(ContactModel *)model
+{
+    if (model) {
+        [self.imageview sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533200614516&di=8e7aea161e813d811fcf7fa0ab895b55&imgtype=0&src=http%3A%2F%2Fimg.25pp.com%2Fuploadfile%2Fsoft%2Fimages%2F2015%2F0313%2F20150313091739191.jpg"] placeholderImage:[UIImage imageNamed:@"kouhong"]];
+        self.titllabel.text=@"热门群组";
+    }
+}
+@end

@@ -1,0 +1,67 @@
+//
+//  WooRegistViewController.m
+//  Woo
+//
+//  Created by 风外杏林香 on 2018/7/26.
+//  Copyright © 2018年 风外杏林香. All rights reserved.
+//
+
+#import "WooRegistViewController.h"
+#import "WooVCViewController.h"
+#import "WooHeader.h"
+@interface WooRegistViewController ()
+
+@end
+
+@implementation WooRegistViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftBtn.frame =CGRectMake(0, 0,40,40);
+    [leftBtn setImage:[UIImage imageNamed:@"back_Image"] forState:UIControlStateNormal];
+    [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [leftBtn addTarget:self action: @selector(backAction) forControlEvents: UIControlEventTouchUpInside];
+    UIBarButtonItem* item=[[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        negativeSpacer.width =-10;
+    self.navigationItem.leftBarButtonItems = [NSArray arrayWithObjects:negativeSpacer, item, nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:@"loginSuccess" object:nil];
+}
+
+- (void)loginSuccess
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"remove" object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)backAction
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    WooVCViewController *vc = [[WooVCViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

@@ -1,0 +1,45 @@
+//
+//  WooVCViewController.m
+//  Woo
+//
+//  Created by 风外杏林香 on 2018/7/26.
+//  Copyright © 2018年 风外杏林香. All rights reserved.
+//
+
+#import "WooVCViewController.h"
+
+@interface WooVCViewController ()
+
+@end
+
+@implementation WooVCViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.view removeFromSuperview];
+//    self.tabBarController.selectedIndex = 0;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

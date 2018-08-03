@@ -1,0 +1,15 @@
+//
+//  PacketHander.h
+//  Five_D_walletApp
+//
+//  Created by apple on 16/3/24.
+//  Copyright © 2016年 wqf. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+/*获取短信验证码接口*/
+FOUNDATION_EXPORT           NSString *const getMessageurl;
+
+@interface PacketHandler : NSObject
+
+@end

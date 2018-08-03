@@ -1,0 +1,37 @@
+
+//
+//  WowoPrefixHeader.pch
+//  Woo
+//
+//  Created by 王起锋 on 2018/8/2.
+//  Copyright © 2018年 风外杏林香. All rights reserved.
+//
+
+#ifndef WowoPrefixHeader_pch
+#define WowoPrefixHeader_pch
+#ifdef __OBJC__
+#import "PublicFunction.h"
+#import "WooHeader.h"
+
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+//相对iphone6 屏幕比
+//相对iphone6 屏幕比
+#define KWidth_Scale    [UIScreen mainScreen].bounds.size.width/375.0f
+#define Kheight_Scale    [UIScreen mainScreen].bounds.size.height/667.0f
+// 颜色便捷函数
+#define RGB(R, G, B)  ([UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0])
+#define RGBAColor(r, g, b ,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
+#define UIFont(x)  [UIFont systemFontOfSize:x]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+//打印
+#ifndef __OPTIMIZE__
+#define ZKLog(...) NSLog(__VA_ARGS__)
+#else
+#define ZKLog(...){}
+#endif
+#endif /* PrefixHeader_pch */
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* WowoPrefixHeader_pch */

@@ -1,0 +1,25 @@
+//
+//  PacketHander.m
+//  Five_D_walletApp
+//
+//  Created by apple on 16/3/28.
+//  Copyright © 2016年 wqf. All rights reserved.
+//
+
+#import "PacketHandler.h"
+//正式服务器
+//#define kServiceIP @"https://106.14.198.182:18443/loan-server/"
+//测试服务地址
+//#define kServiceIP @"http://10.10.100.39:8080/loan-server/"
+#define kServiceIP @"http://www.35zhizhi.com/"
+//#define kServiceIP @"http://www.liangxinloan.com/"
+//#define kServiceIP @"http://10.10.100.24:8088/loan-server/"
+
+//获取短信验证码接口
+NSString *const getMessageurl = @"" kServiceIP"common/verifycode";
+#pragma mark - 首页接口
+
+
+@implementation PacketHandler
+
+@end

@@ -1,0 +1,15 @@
+platform:ios,8.0
+target 'Woo' do
+pod 'Reachability'
+pod 'MJRefresh'
+pod 'MBProgressHUD'
+pod 'AFNetworking'
+pod 'JSONKit-NoWarning'
+pod 'MJExtension'
+pod 'SDAutoLayout'
+pod 'TZImagePickerController'
+pod 'SDCycleScrollView'
+pod 'RongCloudIM/IMKit', '~> 2.8.31'
+pod 'RongCloudIM/IMLib', '~> 2.8.31'
+pod 'MLMenu', '~> 1.1.0'
+end 
